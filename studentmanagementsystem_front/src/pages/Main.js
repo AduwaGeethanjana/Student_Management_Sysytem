@@ -9,7 +9,7 @@ export default function Main() {
     <div class="row row-cols-1 row-cols-md-2 g-4">
   <div class="col">
     <div class="card">
-      <img src={addstudent} height="600px" class="card-img-top" alt="addstudent"/>
+      <img src={addstudent} height="550px" class="card-img-top" alt="addstudent"/>
       <div class="card-body">
       <Link
                     className="btn btn-primary mx-2"
@@ -22,7 +22,7 @@ export default function Main() {
   </div>
   <div class="col">
     <div class="card">
-      <img src={viewstudents} height="600px" class="card-img-top" alt="view student"/>
+      <img src={viewstudents} height="550px" class="card-img-top" alt="view student"/>
       <div class="card-body">
       <Link
                     className="btn btn-primary mx-2"
