@@ -1,3 +1,14 @@
+package com.sms.studentmanagementsystemapi.controller;
+
+
+import com.sms.studentmanagementsystemapi.exception.UserNotFoundException;
+import com.sms.studentmanagementsystemapi.model.User;
+import com.sms.studentmanagementsystemapi.repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
