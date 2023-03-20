@@ -3,38 +3,37 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 export default function EditUser() {
+  let navigate = useNavigate();
 
-    let navigate = useNavigate();
+  const { id } = useParams();
 
-    const {id}=useParams()
+  const [user, setUser] = useState({
+    name: "",
+    usernames: "",
+    email: "",
+    degreeProgram: "",
+  });
 
-    const [user,setUser]=useState({
-        name:"",
-        usernames:"",
-        email:"",
-        degreeProgram:""
-    })
+  const { name, usernames, email, degreeProgram } = user;
 
-    const{name,usernames,email,degreeProgram}=user
+  const onInputChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
 
-    const onInputChange=(e)=>{
-        setUser({ ...user, [e.target.name]: e.target.value });
-    };
+  useEffect(() => {
+    loadUser();
+  }, []);
 
-    useEffect(()=>{
-      loadUser();
-    },[]);
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    await axios.put(`http://localhost:8080/user/${id}`, user);
+    navigate("/");
+  };
 
-    const onSubmit = async (e) => {
-        e.preventDefault();
-        await axios.put(`http://localhost:8080/user/${id}`, user);
-        navigate("/");
-      };
-
-    const loadUser =async ()=>{
-        const result=await axios.get(`http://localhost:8080/user/${id}`)
-        setUser(result.data)
-    }
+  const loadUser = async () => {
+    const result = await axios.get(`http://localhost:8080/user/${id}`);
+    setUser(result.data);
+  };
 
   return (
     <div className="container">
@@ -95,7 +94,7 @@ export default function EditUser() {
                 onChange={(e) => onInputChange(e)}
               />
             </div>
-            <button type="submit" className="btn btn-outline-primary" >
+            <button type="submit" className="btn btn-outline-primary">
               Submit
             </button>
             <Link className="btn btn-outline-danger mx-2" to="/home">

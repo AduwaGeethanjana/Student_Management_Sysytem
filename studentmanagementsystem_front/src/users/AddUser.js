@@ -3,26 +3,25 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function AddUser() {
+  let navigate = useNavigate();
+  const [user, setUser] = useState({
+    name: "",
+    usernames: "",
+    email: "",
+    degreeProgram: "",
+  });
 
-    let navigate = useNavigate();
-    const [user,setUser]=useState({
-        name:"",
-        usernames:"",
-        email:"",
-        degreeProgram:"",
-    })
+  const { name, usernames, email, degreeProgram } = user;
 
-    const{name,usernames,email,degreeProgram}=user
+  const onInputChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
 
-    const onInputChange=(e)=>{
-        setUser({ ...user, [e.target.name]: e.target.value });
-    };
-
-    const onSubmit = async (e) => {
-        e.preventDefault();
-        await axios.post("http://localhost:8080/user", user);
-        navigate("/");
-      };
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    await axios.post("http://localhost:8080/user", user);
+    navigate("/");
+  };
 
   return (
     <div className="container">
