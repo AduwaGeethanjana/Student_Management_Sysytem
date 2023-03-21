@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 export default function ViewUser() {
@@ -7,7 +7,7 @@ export default function ViewUser() {
     name: "",
     usernames: "",
     email: "",
-    degreeProgram:""
+    degreeProgram: "",
   });
 
   const { id } = useParams();
@@ -51,7 +51,7 @@ export default function ViewUser() {
             </div>
           </div>
           <Link className="btn btn-primary my-2" to={"/home"}>
-            Back 
+            Back
           </Link>
         </div>
       </div>
